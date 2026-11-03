@@ -158,7 +158,12 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
 .schedule-table td {padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: middle;}
 .schedule-table tbody tr:nth-child(even) {background: var(--surface-soft);}
 .schedule-table .date-cell {color: #26364A; font-weight: 850; text-align: center; white-space: nowrap;}
-.schedule-table .time-cell {font-weight: 800; text-align: center; white-space: nowrap;}
+.schedule-table .time-cell {
+  font-weight: 800;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.5;
+}
 .schedule-table .highlight {color: #9B793F; font-weight: 850;}
 .schedule-table .subline {display: block; margin-top: 4px; color: var(--text-muted);font-size: 11px;line-height: 1.6;}
 .schedule-note {margin-top: 9px; color: var(--text-muted); font-size: 12px;}
@@ -315,6 +320,14 @@ const search = document.getElementById("search");
 const count = document.getElementById("count");
 const empty = document.getElementById("empty");
 
+document.querySelectorAll(".schedule-table .time-cell").forEach(cell => {
+  const time = cell.textContent.trim();
+
+  if (["15:00–16:00", "16:00–16:30", "16:30–18:00", "08:30–09:30"].includes(time)) {
+    const [start, end] = time.split("–");
+    cell.innerHTML = `${start}–<br>${end}`;
+  }
+});
 function render() {
   const q = search.value.trim().toLocaleLowerCase("ko");
   const filtered = songs.filter(song =>
