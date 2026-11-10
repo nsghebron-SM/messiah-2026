@@ -186,6 +186,27 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
   .schedule-table th:nth-child(3), .schedule-table td:nth-child(3) { width:27%; }
   .schedule-table th:nth-child(4), .schedule-table td:nth-child(4) { width:32%; }
 }
+background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.video-close {
+  display: block;
+  margin-left: auto;
+  padding: 10px 16px;
+  border: 0;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.video-dialog iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}  
 </style>
 </head>
 <body>
@@ -347,9 +368,13 @@ function render() {
     const links = keys.filter(k => song.parts[k]).map(k =>
       `<a class="part-link" href="${song.parts[k]}" target="_blank" rel="noopener noreferrer" aria-label="${song.title} ${partNames[k]} 연습자료 열기">${k}<small>${partNames[k]}</small></a>`
     ).join("");
-    const wholeLink = song.wholeChoir
-      ? `<a class="whole-link" href="${song.wholeChoir}" target="_blank" rel="noopener noreferrer" aria-label="${song.title} 전체 합창 영상 열기"><span class="whole-mark">♪</span> 전체 합창 듣기</a>`
-      : "";
+   const videoId = song.wholeChoir
+  ? (song.wholeChoir.match(/(?:youtu\.be\/|v=)([A-Za-z0-9_-]{11})/) || [])[1]
+  : "";
+
+const wholeLink = videoId
+  ? `<a class="whole-link" href="#" data-video-id="${videoId}" data-video-title="${song.title}"><span class="whole-mark">♪</span> 전체 합창 듣기</a>`
+  : "";
     return `<article class="song">
       <div class="song-number">${String(song.number).padStart(2,"0")}</div>
       <div class="song-main">
@@ -378,6 +403,38 @@ document.querySelectorAll(".filter").forEach(button => {
 });
 search.addEventListener("input", render);
 render();
+   const id = link.dataset.videoId;
+    if (!id) return;
+
+    videoFrame.src =
+      `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1`;
+
+    videoModal.classList.add("show");
+  });
+
+  videoClose.addEventListener("click", closeVideo);
+
+  videoModal.addEventListener("click", function(e) {
+    if (e.target === videoModal) closeVideo();
+  });
+
+  function closeVideo() {
+    videoModal.classList.remove("show");
+    videoFrame.src = "";
+  }
+
+});
 </script>
+  <div id="videoModal" class="video-modal">
+  <div class="video-dialog">
+    <button id="videoClose" class="video-close">닫기 ✕</button>
+    <iframe id="videoFrame"
+      src=""
+      title="전체 합창 영상"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
 </body>
 </html>
