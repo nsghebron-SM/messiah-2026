@@ -320,7 +320,87 @@ footer { text-align:center; color:var(--text-muted); font-size:11px; padding:18p
   <footer>HANDEL · MESSIAH · 2026 MUSIC WORSHIP</footer>
 </div>
 <script>
-const songs = [{"number": 4, "title": "주의 영광", "parts": {"S": "https://joongangart.kr/Handel_Messiah/01/pop1.html", "A": "https://joongangart.kr/Handel_Messiah/01/pop2.html", "T": "https://joongangart.kr/Handel_Messiah/01/pop3.html", "B": "https://joongangart.kr/Handel_Messiah/01/pop4.html"}, "wholeChoir": "https://youtu.be/MOIbkV8q4nQ"}, {"number": 7, "title": "정결케 하리라", "parts": {"S": "https://joongangart.kr/Handel_Messiah/02/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/02/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/02/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/02/pop5.html"}, "wholeChoir": "https://youtu.be/ZM8gM60Y7Hk"}, {"number": 9, "title": "오 기쁜 소식을 시온에 전하는 자여", "parts": {"S": "https://joongangart.kr/Handel_Messiah/03/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/03/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/03/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/03/pop5.html"}, "wholeChoir": "https://youtu.be/o9GImchGUGg"}, {"number": 12, "title": "우리를 위해 나셨다", "parts": {"S": "https://joongangart.kr/Handel_Messiah/04/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/04/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/04/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/04/pop5.html"}, "wholeChoir": "https://youtu.be/isBKgGQ2Kuc"}, {"number": 17, "title": "높은 곳에 하나님께 영광", "parts": {"S": "https://joongangart.kr/Handel_Messiah/05/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/05/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/05/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/05/pop5.html"}}, {"number": 44, "title": "할렐루야", "parts": {"S": "https://joongangart.kr/Handel_Messiah/17/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/17/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/17/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/17/pop5.html"}}, {"number": 53, "title": "죽임당하신 어린양", "parts": {"S": "https://joongangart.kr/Handel_Messiah/20/pop2.html", "A": "https://joongangart.kr/Handel_Messiah/20/pop3.html", "T": "https://joongangart.kr/Handel_Messiah/20/pop4.html", "B": "https://joongangart.kr/Handel_Messiah/20/pop5.html"}}];
+
+const songs = [
+  {
+    "number": 4,
+    "title": "주의 영광",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/01/pop1.html",
+      "A": "https://joongangart.kr/Handel_Messiah/01/pop2.html",
+      "T": "https://joongangart.kr/Handel_Messiah/01/pop3.html",
+      "B": "https://joongangart.kr/Handel_Messiah/01/pop4.html"
+    },
+    "wholeChoir": "https://youtu.be/MOIbkV8q4nQ"
+  },
+  {
+    "number": 7,
+    "title": "정결케 하리라",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/02/pop2.html",
+      "A": "https://joongangart.kr/Handel_Messiah/02/pop3.html",
+      "T": "https://joongangart.kr/Handel_Messiah/02/pop4.html",
+      "B": "https://joongangart.kr/Handel_Messiah/02/pop5.html"
+    },
+    "wholeChoir": "https://youtu.be/ZM8gM60Y7Hk"
+  },
+  {
+    "number": 9,
+    "title": "오 기쁜 소식을 시온에 전하는 자여",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/03/pop2.html",
+      "A": "https://joongangart.kr/Handel_Messiah/03/pop3.html",
+      "T": "https://joongangart.kr/Handel_Messiah/03/pop4.html",
+      "B": "https://joongangart.kr/Handel_Messiah/03/pop5.html"
+    },
+    "wholeChoir": "https://youtu.be/o9GImchGUGg"
+  },
+  {
+    "number": 12,
+    "title": "우리를 위해 나셨다",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/04/pop2.html",
+      "A": "https://joongangart.kr/Handel_Messiah/04/pop3.html",
+      "T": "https://joongangart.kr/Handel_Messiah/04/pop4.html",
+      "B": "https://joongangart.kr/Handel_Messiah/04/pop5.html"
+    },
+    "wholeChoir": "https://youtu.be/isBKgGQ2Kuc"
+  },
+  {
+    "number": 17,
+    "title": "높은 곳에 하나님께 영광",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/05/pop2.html",
+      "A": "https://joongangart.kr/Handel_Messiah/05/pop3.html",
+      "T": "https://joongangart.kr/Handel_Messiah/05/pop4.html",
+      "B": "https://joongangart.kr/Handel_Messiah/05/pop5.html"
+    },
+    "wholeChoir": "https://youtu.be/mQrEIrZJx0w?si=F4Nj9hl3WdK_NXhm"
+  },
+  {
+    "number": 44,
+    "title": "할렐루야",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/17/pop2.html",
+      "A": "https://joongangart.kr/Handel_Messiah/17/pop3.html",
+      "T": "https://joongangart.kr/Handel_Messiah/17/pop4.html",
+      "B": "https://joongangart.kr/Handel_Messiah/17/pop5.html"
+    },
+    "wholeChoir": "https://youtu.be/aFyp82zfv4w?si=D5X_4mRJtBhaMg3o"
+  },
+  {
+    "number": 53,
+    "title": "죽임당하신 어린양",
+    "parts": {
+      "S": "https://joongangart.kr/Handel_Messiah/20/pop2.html",
+      "A": "https://joongangart.kr/Handel_Messiah/20/pop3.html",
+      "T": "https://joongangart.kr/Handel_Messiah/20/pop4.html",
+      "B": "https://joongangart.kr/Handel_Messiah/20/pop5.html"
+    },
+    "wholeChoir": "https://youtu.be/yhfvJdM1lQI?si=37yxbwAnUH3ZYbuO"
+  }
+];
+
 const partNames = {S:"소프라노", A:"알토", T:"테너", B:"베이스"};
 let selectedPart = "ALL";
 const list = document.getElementById("songList");
